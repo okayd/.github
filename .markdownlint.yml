@@ -1,5 +1,8 @@
 default: true
 
+# Allow first-line headings to be optional due to special needs of profile section
+first-line-heading: false
+
 # Some services use a linebreak-sensitive renderer, e.g. GitHub comment and BitBucket
 line-length: false
 
