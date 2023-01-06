@@ -1,0 +1,35 @@
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit $1
+
+pre-commit:
+  parallel: true
+  commands:
+    editorconfig:
+      tags: editorconfig format
+      glob: ".editorconfig"
+      run: npx prettier --write {staged_files} && git add {staged_files}
+    format:
+      tags: prettier format
+      glob: "*.{css,html,json,less,mdx,scss,vue,yaml,yml}"
+      run: npx prettier --write {staged_files} && git add {staged_files}
+    license:
+      tags: prettier format
+      glob: "LICENSE"
+      run: npx prettier --write {staged_files} && git add {staged_files}
+    markdown:
+      tags: markdown lint
+      glob: "*.md"
+      run: npx prettier --write {staged_files} && git add {staged_files} && npx markdownlint {staged_files}
+    markdown-toc:
+      tags: markdown toc format
+      glob: "{CODE_OF_CONDUCT.md,MAINTAINING.md}"
+      run: npx doctoc --maxlevel 3 --notitle {staged_files} && npx prettier --write {staged_files} && git add {staged_files}
+    package-json:
+      tags: package-json format lint
+      glob: "package.json"
+      run: npx sort-package-json && npx npmPkgJsonLint -c ./.npmpackagejsonlintrc.json . && git add package.json

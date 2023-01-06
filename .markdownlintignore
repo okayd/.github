@@ -1,0 +1,9 @@
+node_modules/
+
+charts/
+
+.cache/
+public/
+content/
+coverage/
+/**/__test__/**/*.*

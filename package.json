@@ -1,0 +1,33 @@
+{
+  "name": "@okayd/.github",
+  "version": "0.0.0",
+  "description": "The public GitHub organization profile for Okayd",
+  "homepage": "https://github.com/okayd/.github#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okayd/.github.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "format": "run-s format:doctoc format:package-json format:prettier",
+    "format:doctoc": "doctoc --maxlevel 3 --notitle ./CODE_OF_CONDUCT.md ./MAINTAINING.md",
+    "format:package-json": "sort-package-json",
+    "format:prettier": "prettier --write '**/*.{css,gql,graphql,html,js,jsx,json,less,md,mdx,scss,ts,tsx,vue,yaml,yml}' '.editorconfig' 'LICENSE'",
+    "lint": "run-p --print-label lint:markdown lint:package-json",
+    "lint:markdown": "markdownlint '**/*.md'",
+    "lint:package-json": "npmPkgJsonLint -c ./.npmpackagejsonlintrc.json .",
+    "prepare": "lefthook install",
+    "test": "run-p lint"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
+    "doctoc": "2.2.1",
+    "lefthook": "1.2.6",
+    "markdownlint-cli": "0.32.1",
+    "npm-package-json-lint": "5.4.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.6.2",
+    "sort-package-json": "1.22.1"
+  }
+}
