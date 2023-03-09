@@ -10,7 +10,6 @@ node_modules/
 
 # Ignore lock files for non-node project
 yarn.lock
-package-lock.json
 
 # Optional npm cache directory
 .npm
